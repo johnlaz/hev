@@ -52,10 +52,10 @@ Once installed it opens in its own window. Long-press the icon on Android for sh
 
 ## Deploy in five minutes (GitHub Pages)
 
-The whole app is **two files**: `index.html` and `sw.js`. Keep them side by side.
+Everything sits in one flat folder, with no subfolders. Keep all the files side by side.
 
 1. Create a new repository, for example `hummer-ev-guide`.
-2. Upload `index.html` and `sw.js` to the repository root.
+2. Upload every file from this folder to the repository root.
 3. In the repo go to **Settings ▸ Pages**, choose **Deploy from a branch**, pick `main` and `/ (root)`, then save.
 4. After a minute the site is live at `https://<your-username>.github.io/hummer-ev-guide/`.
 5. Open it once on your phone while online so the offline copy is saved, then install it.
@@ -72,7 +72,7 @@ python3 -m http.server 8000
 ## Shipping updates
 
 1. Edit `index.html` (content, videos, styling).
-2. Change `VERSION` at the top of `sw.js`, for example `v1.0.1`, and update the version in the footer of `index.html`.
+2. Change `VERSION` at the top of `sw.js`, for example `v1.0.2`, and update the version in the footer of `index.html`.
 3. Commit and push. Anyone with the app installed gets a small **Reload** prompt the next time they open it.
 
 Skipping step 2 means installed copies can keep showing the old cached version.
@@ -81,20 +81,26 @@ Skipping step 2 means installed copies can keep showing the old cached version.
 
 - **Videos:** edit the `VIDEOS` list in the script at the bottom of `index.html`. Each entry is a YouTube ID, a title and a one-line description. Then drop `data-vid="ID"` into any section to embed it there.
 - **Colors:** everything is driven by the CSS variables at the top of the stylesheet (`--red`, `--amber`, `--graphite` and friends).
-- **Icons:** the app icons are embedded in the `ICON` block at the top of `index.html` (as base64 PNGs). Swap those strings to change them. The `m192` and `m512` entries are the padded "maskable" versions so Android's round masks don't clip the artwork.
+- **Icons:** replace the PNG files with your own at the same sizes. The `maskable` versions keep the artwork inside Android's safe zone so round masks don't clip it.
 
 ## What's in the box
 
 ```
 .
-├── index.html   # the entire app: markup, styles, logic, fonts, images, icons, manifest
-└── sw.js        # tiny service worker that makes it work offline
+├── index.html               # the app: markup, styles, logic, fonts and header image embedded
+├── sw.js                    # tiny service worker that makes it work offline
+├── manifest.webmanifest     # app name, colors, icons and home-screen shortcuts
+├── icon-192.png             # app icon
+├── icon-512.png             # app icon (large)
+├── icon-maskable-192.png    # padded icon for Android's round and squircle masks
+├── icon-maskable-512.png    # padded icon (large)
+├── apple-touch-icon.png     # iPhone / iPad home-screen icon
+└── README.md
 ```
 
 ## Under the hood
 
-- Plain HTML, CSS and JavaScript. No framework, no bundler, no build step. Fonts, the header image and the app icons are embedded right in `index.html`.
-- The web manifest is generated at load time from the embedded icons, which is how the app installs from a single HTML file.
+- Plain HTML, CSS and JavaScript. No framework, no bundler, no build step. Fonts and the header image are embedded right in `index.html`.
 - The service worker saves the page for offline use and serves it network-first (so updates land). Cross-origin requests such as YouTube are never intercepted.
 - Progress is stored in `localStorage` on the device only.
 - Videos use the `youtube-nocookie.com` embed with a lightweight click-to-load thumbnail, so nothing from YouTube loads until you tap play.

@@ -1,12 +1,12 @@
 /* HEV Guide service worker (companion to index.html)
- * - Precaches the page so the guide opens offline. Everything else (fonts, images, icons) is embedded in index.html.
+ * - Precaches the page so the guide opens offline. Fonts and the header image are embedded in index.html; the manifest and small icons are cached alongside it.
  * - Pages: network first (so updates arrive), cache as fallback.
  * - Cross-origin requests (YouTube embeds and thumbnails) are never touched.
  * To ship an update: change VERSION, redeploy. Installed copies get a "Reload" prompt.
  */
-const VERSION = 'v1.0.0';
+const VERSION = 'v1.0.1';
 const CACHE = 'hev-guide-' + VERSION;
-const PRECACHE = ['./', './index.html'];
+const PRECACHE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-maskable-192.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE)));

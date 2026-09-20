@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "GMC Hummer EV Owner Guide",
+  "short_name": "HEV Guide",
+  "description": "Interactive owner guide for the GMC Hummer EV: setup checklist, drive modes, CrabWalk, Watts to Freedom, Sky Panels, Super Cruise and walkthrough videos.",
+  "lang": "en-US",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#0a0a0c",
+  "theme_color": "#0a0a0c",
+  "categories": ["automotive", "education", "utilities"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Setup checklist", "short_name": "Setup", "url": "./?source=shortcut#pre-setup", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Driving & modes", "short_name": "Driving", "url": "./?source=shortcut#driving", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Video library", "short_name": "Videos", "url": "./?source=shortcut#videos", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] }
+  ]
+}
