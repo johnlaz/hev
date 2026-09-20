@@ -4,8 +4,10 @@
  * - Cross-origin requests (YouTube embeds and thumbnails) are never touched.
  * To ship an update: change VERSION, redeploy. Installed copies get a "Reload" prompt.
  */
-const VERSION = 'v1.0.2';
+const VERSION = 'v1.0.3';
 const CACHE = 'hev-guide-' + VERSION;
+const SCOPE_PATH = new URL('./', self.registration.scope).pathname; // e.g. /hummer-ev-guide/
+const APP_PAGES = [SCOPE_PATH, SCOPE_PATH + 'index.html'];
 const PRECACHE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-maskable-192.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', (event) => {
@@ -29,8 +31,10 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+  if (!url.pathname.startsWith(SCOPE_PATH)) return; // never touch other apps on the same domain
 
   if (req.mode === 'navigate') {
+    if (APP_PAGES.indexOf(url.pathname) === -1) return; // only handle this app's own page
     event.respondWith(
       fetch(req)
         .then((res) => {
