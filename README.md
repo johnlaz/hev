@@ -28,11 +28,11 @@ This guide puts the important stuff in one place, in plain language, with the ri
 | 🏎️ **Driving & Modes** | Shifting, One-Pedal Driving and the regen paddle, the full drive mode dial, My Mode, **Watts to Freedom** launch steps, **CrabWalk** and **King Crab**, and the Off-Road app. |
 | ☀️ **Roof & Exterior** | One-touch all-windows-down, Sky Panel removal and frunk storage, air suspension heights and Extract Mode. |
 | 💻 **Tech & Cameras** | Super Cruise and what the light bar colors mean, the 360 and underbody camera views, the power frunk, charging and the Energy app. |
-| 🎬 **Video Library** | All 13 videos in one place, every link printed in full, plus GMC's Declassified playlist and official quick start guides. |
+| 🎬 **Video Library** | All 12 videos in one place, every link printed in full, plus GMC's Declassified playlist and official quick start guides. |
 
 ## Highlights
 
-- **Videos where you need them.** 13 hand-picked walkthroughs (11 from GMC's own channel) sit inside the section they explain. Tap to play in place, or jump to YouTube.
+- **Videos where you need them.** 12 hand-picked walkthroughs (10 from GMC's own channel) sit inside the section they explain. Tap to play in place, or jump to YouTube.
 - **Installs like a real app.** One tap to add it to the home screen, with its own icon, splash color and full-screen window.
 - **Works offline.** The whole guide is cached on the device after the first visit. Perfect for the trailhead, the parking garage and the dead zone. (Videos still need a connection.)
 - **Keeps your place.** Setup steps and "watched" marks are remembered on the device. No account, no sign-in, nothing uploaded.
@@ -72,7 +72,7 @@ python3 -m http.server 8000
 ## Shipping updates
 
 1. Edit `index.html` (content, videos, styling).
-2. Change `VERSION` at the top of `sw.js`, for example `v1.0.2`, and update the version in the footer of `index.html`.
+2. Change `VERSION` at the top of `sw.js`, for example `v1.0.3`, and update the version in the footer of `index.html`.
 3. Commit and push. Anyone with the app installed gets a small **Reload** prompt the next time they open it.
 
 Skipping step 2 means installed copies can keep showing the old cached version.

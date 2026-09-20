@@ -4,7 +4,7 @@
  * - Cross-origin requests (YouTube embeds and thumbnails) are never touched.
  * To ship an update: change VERSION, redeploy. Installed copies get a "Reload" prompt.
  */
-const VERSION = 'v1.0.1';
+const VERSION = 'v1.0.2';
 const CACHE = 'hev-guide-' + VERSION;
 const PRECACHE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-maskable-192.png', './apple-touch-icon.png'];
 
